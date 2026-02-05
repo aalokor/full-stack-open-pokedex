@@ -36,8 +36,6 @@ const PokemonPage = ({ previous, next }) => {
 
   // eslint-disable-next-line no-console
   console.log('hiddenAbility=', hiddenAbility)
-  // eslint-disable-next-line no-console
-  console.log('health test')
   return (
     <>
       <div className="links">
