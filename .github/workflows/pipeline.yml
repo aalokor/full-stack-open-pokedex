@@ -36,13 +36,13 @@ jobs:
           curl https://api.render.com/deploy/srv-${{ secrets.RENDER_SERVICE_ID }}?key=${{ secrets.RENDER_API_KEY }}
       - name: notify on success
         if: success() && github.event_name == 'push'
-        uses: rjstone/discord-webhook-notify@v2
+        uses: rjstone/discord-webhook-notify@v2.2.1
         with:
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
           title: "A new version of Pokedex deployed"
       - name: notify on failure
         if: failure()
-        uses: rjstone/discord-webhook-notify@v2
+        uses: rjstone/discord-webhook-notify@v2.2.1
         with:
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
           title: "Pokedex deployment failed"
