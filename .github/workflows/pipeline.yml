@@ -31,11 +31,14 @@ jobs:
       - name: trigger deployment
         if: >
           github.event_name == 'push' &&
-          !contains(join(github.event.head_commit.message, ' '), '#skip')
+          !contains(github.event.head_commit.message, '#skip')
         run: |
           curl https://api.render.com/deploy/srv-${{ secrets.RENDER_SERVICE_ID }}?key=${{ secrets.RENDER_API_KEY }}
       - name: notify on success
-        if: success() && github.event_name == 'push'
+        if: > 
+          success() && 
+          github.event_name == 'push' && 
+          !contains(github.event.head_commit.message, '#skip')
         uses: tsickert/discord-webhook@v7.0.0
         with:
           webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
