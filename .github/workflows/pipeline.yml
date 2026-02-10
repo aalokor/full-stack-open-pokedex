@@ -38,20 +38,20 @@ jobs:
         if: success() && github.event_name == 'push'
         uses: tsickert/discord-webhook@v7.0.0
         with:
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+          webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
           content: "A new version of Pokedex deployed"
       - name: notify on failure
         if: failure()
         uses: tsickert/discord-webhook@v7.0.0
         with:
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+          webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
           content: "Pokedex deployment failed"
 
   tag_release:
     needs: [simple_deployment_pipeline]
     if: >
       github.event_name == 'push' &&
-      !contains(join(github.event.head_commit.message, ' '), '#skip')
+      !contains(github.event.head_commit.message, '#skip')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
