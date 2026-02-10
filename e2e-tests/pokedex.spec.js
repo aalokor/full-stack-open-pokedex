@@ -17,6 +17,6 @@ describe('Pokedex', () => {
     await page.getByRole('link', { name: pokemonName }).click()
     await expect(page.getByText('ivysaur')).toBeVisible()
     await expect(page).toHaveURL(`/pokemon/${pokemonName}`)
-    await expect(page.getByText('chlorophyll')).toBeVisible()(
+    await expect(page.getByText('chlorophyll')).toBeVisible()
   })
 })
