@@ -43,7 +43,8 @@ jobs:
           content: "A new version of Pokedex deployed"
           embed-title: "Success"
           embed-description: A new version of Pokedex deployed to ${{ secrets.DEPLOYMENT_URL }}.
-          embed-footer-text: "Severity: Informational • ${{ github.run_started_at }}"
+          embed-footer-text: "Severity: Informational"
+          embed-timestamp: ${{ github.event.head_commit.timestamp }}
           embed-color: 3066993
       - name: notify on failure
         if: failure()
@@ -54,7 +55,8 @@ jobs:
           content: "Pokedex deployment failed"
           embed-title: "Error"
           embed-description: A commit `${{ github.sha }}` by **${{ github.actor }}** broke the build.
-          embed-footer-text: "Severity: Error • ${{ github.run_started_at }}"
+          embed-footer-text: "Severity: Error"
+          embed-timestamp: ${{ github.event.head_commit.timestamp }}
           embed-color: 15158332
 
   tag_release:
