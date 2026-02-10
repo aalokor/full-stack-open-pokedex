@@ -41,6 +41,11 @@ jobs:
           webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
           username: "Full Stack Pokedex"
           content: "A new version of Pokedex deployed"
+          embed-title: "Success"
+          embed-description: A new version of Pokedex deployed to
+          embed-url: ${{ secrets.DEPLOYMENT_URL }}
+          embed-footer-text: "Severity: Informational • ${{ github.run_started_at }}"
+          embed-color: 3066993
       - name: notify on failure
         if: failure()
         uses: tsickert/discord-webhook@v7.0.0
