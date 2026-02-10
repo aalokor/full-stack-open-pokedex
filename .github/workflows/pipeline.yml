@@ -54,7 +54,7 @@ jobs:
           username: "Full Stack Pokedex"
           content: "Pokedex deployment failed"
           embed-title: "Error"
-          embed-description: A commit `${{ github.sha }}` by **${{ github.actor }}** broke the build.
+          embed-description: A commit [`${{ github.sha }}`](${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}) by **${{ github.actor }}** broke the build.
           embed-footer-text: "Severity: Error"
           embed-timestamp: ${{ github.event.head_commit.timestamp }}
           embed-color: 15158332
