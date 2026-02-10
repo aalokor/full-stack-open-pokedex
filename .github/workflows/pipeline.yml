@@ -39,12 +39,14 @@ jobs:
         uses: tsickert/discord-webhook@v7.0.0
         with:
           webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
+          username: "Full Stack Pokedex"
           content: "A new version of Pokedex deployed"
       - name: notify on failure
         if: failure()
         uses: tsickert/discord-webhook@v7.0.0
         with:
           webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
+          username: "Full Stack Pokedex"
           content: "Pokedex deployment failed"
 
   tag_release:
